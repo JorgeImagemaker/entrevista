@@ -1,0 +1,79 @@
+Para probar el proyecto es necesario descargar el programa IntelliJ IDEA y luego cargar el proyecto.
+
+
+
+
+Se genera un proyecto  Gradle https://start.spring.io/ 
+Se crean las carpetas controller, dto, repository, services e interfaces
+Se crea el objeto Producto, con sus parámetros id, nombreProducto, sellIn, price.
+Se crea la clase ProductoController con los métodos.
+	getEvaluarProductos: simula el comportamiento de los productos vendidos segun Dia(s) ingresados
+	getMostrarProductosVendidos: muestra los productos vendidos, extrayendolo del archivo ProductosVendidos.xml
+	setVenderProducto: agrega un producto al archivo ProductosVendidos.xml segun id
+
+Se crea la clase ProductoService con los métodos
+
+evaluarProductos():
+1. Se listan los productos vendidos leyendo un archivo xml (ProductosVendidos.xml) 
+2. Se le aplican las reglas de negocio con el método AplicarReglas();
+3. Luego se formatea la salida en un string
+4. Se retorna el string
+
+mostrarProductosVendidos():
+1. Se listan los productos vendidos leyendo un archivo xml (ProductosVendidos.xml) 
+2. Se retorna un objeto con los productos vendidos
+
+venderProducto():
+1. Se listan los productos que se encuentran a la venta desde archivo (Productos.xml)
+2. Luego se busca el producto según ID ingresado por el usuario con el método buscarProducto()
+3. Se retorna el producto encontrado
+4. El producto es enviado al método addProductoVendido() 
+5. El metodo addProductoVendido() se encarga de abrir el archivo ProductosVendidos.xml y agregarlo a la lista.
+6. Se retorna el producto vendido y se muestra por pantalla
+
+
+
+Ejemplos de ingreso de datos en Postman
+
+/evaluateProducts/producto/{id}
+GET: http://localhost:8080/evaluateProducts/producto/2
+{
+    "id": 2,
+    "nombreProducto": "Mega cobertura",
+    "sellIn": 2,
+    "price": 25
+}
+
+
+/evaluateProducts/mostrar
+GET: http://localhost:8080/evaluateProducts/mostrar
+[
+    {
+        "id": 1,
+        "nombreProducto": "Full cobertura",
+        "sellIn": 3,
+        "price": 50
+    },
+    {
+        "id": 2,
+        "nombreProducto": "Mega cobertura",
+        "sellIn": 2,
+        "price": 25
+    }
+]
+
+
+/evaluateProducts/{day}
+GET: http://localhost:8080/evaluateProducts/2
+
+-------- dia 0 --------
+nombre, sellIn, price
+Full cobertura, 3, 50
+Mega cobertura, 2, 25
+-------- dia 1 --------
+nombre, sellIn, price
+Full cobertura, 2, 53
+Mega cobertura, 1, 25
+
+
+
