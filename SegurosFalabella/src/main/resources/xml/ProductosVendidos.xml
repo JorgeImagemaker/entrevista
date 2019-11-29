@@ -1,0 +1,2 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><ProductosVendidos>
+<producto><id>1</id><nombre>Full cobertura</nombre><sellIn>3</sellIn><price>50</price></producto><producto><id>2</id><nombre>Mega cobertura</nombre><sellIn>2</sellIn><price>25</price></producto></ProductosVendidos>
